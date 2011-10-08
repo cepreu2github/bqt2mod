@@ -41,7 +41,7 @@
 import string, sys, os, codecs, re, subprocess, datetime, shutil
 from HTMLParser import HTMLParser, HTMLParseError
 
-ScriptVersion = '0.8.1'
+ScriptVersion = '0.8.2'
 
 class ConvertError(Exception):
 	pass
@@ -389,7 +389,7 @@ class CConverter:
 		f.write('<?xml version="1.0" encoding="utf-8"?>\n')
 		f.write('<TEI xmlns="http://www.crosswire.org/2008/TEIOSIS/namespace"\n')
 		f.write('\txmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"\n')
-		f.write('\txsi:schemaLocation="http://www.crosswire.org/2008/TEIOSIS/'+\
+		f.write('\txsi:schemaLocation="http://www.crosswire.org/2008/TEIOSIS/'
 			'namespace\n')
 		f.write('\thttp://www.crosswire.org/OSIS/teiP5osis.1.4.xsd">\n')
 		f.write('<teiHeader>\n')
@@ -434,7 +434,7 @@ class CConverter:
 		if self.Options.Versification == 'Auto' and\
 			not self.Options.ModuleType in self.JustBooks:
 			self.Options.Versification = 'Synodal'
-			print ('ПРЕДУПРЕЖДЕНИЕ: не удалось определить версификацию'+\
+			print ('ПРЕДУПРЕЖДЕНИЕ: не удалось определить версификацию'
 				' автоматически. Будет использована Synodal\n').decode('utf-8')
 		self.WriteConfFile()		
 		#закрываем файлы
@@ -482,8 +482,8 @@ class CConverter:
 	def CheckModuleName(self,Name):
 		for i in xrange(0, len(Name)):
 			if not Name[i] in string.printable:
-				print ('ПРЕДУПРЕЖДЕНИЕ: имя модуля содержит нелатинские\n'+\
-					'символы. Итоговый модуль Sword не будет работать\n'+\
+				print ('ПРЕДУПРЕЖДЕНИЕ: имя модуля содержит нелатинские\n'
+					'символы. Итоговый модуль Sword не будет работать\n'
 					'в некоторых фронтендах. Например BibleTime.\n').\
 					decode('utf-8')
 				return
@@ -531,8 +531,8 @@ class CConverter:
 				decode('utf-8')
 			print ('запустите скрипт с параметром "--moduletype Apocrypha", ').\
 				decode('utf-8')
-			print ('чтобы получить модуль, содержащий только апокрифы в'+\
-				+' формате').decode('utf-8')
+			print ('чтобы получить модуль, содержащий только апокрифы в'
+				' формате').decode('utf-8')
 			print ('обычной книги.').decode('utf-8')
 			return False
 		# определяем наличие в модуле номеров Стронга
@@ -586,7 +586,8 @@ class CConverter:
 			self.CurrentBookSettings.BookName != '':
 			BookFile = file(self.GetFileNameInProperCase(\
 				self.CurrentBookSettings.BookPathToFile), 'r')
-			print ('Обрабатываю файл ').decode('utf-8')+self.CurrentBookSettings.BookPathToFile
+			print ('Обрабатываю файл ').decode('utf-8')+\
+				self.CurrentBookSettings.BookPathToFile
 			self.ParseBookFile(BookFile, self.CurrentBookSettings.BookName)
 			BookFile.close()
 
@@ -648,7 +649,7 @@ class CConverter:
 					OsisFile.write(Text)
 					OsisFile.write('</verse>\n')
 				elif self.Converter.Options.ModuleType == 'Commentary':
-					OsisFile.write('\t\t\t\t<div annotateType="commentary"'+\
+					OsisFile.write('\t\t\t\t<div annotateType="commentary"'
 						' annotateRef="'+BookName+'.'+\
 						str(ChapterId)+'.'+str(VerseId)+'">')
 					OsisFile.write(Text)
@@ -1118,9 +1119,9 @@ class CConverter:
 	def WriteHeadOsis(self):
 		f = self.OsisFile
 		f.write('<?xml version="1.0" encoding="UTF-8" ?>\n')
-		f.write('<osis \n xmlns="http://www.bibletechnologies.net/'+\
-			'2003/OSIS/namespace" \n xmlns:xsi="http://www.w3.org/2001/'+\
-			'XMLSchema-instance" \n xsi:schemaLocation="http://www.'+\
+		f.write('<osis \n xmlns="http://www.bibletechnologies.net/'
+			'2003/OSIS/namespace" \n xmlns:xsi="http://www.w3.org/2001/'
+			'XMLSchema-instance" \n xsi:schemaLocation="http://www.'
 			'bibletechnologies.net/2003/OSIS/namespace osisCore.2.5.xsd">\n')
 		if self.Options.ModuleType in self.JustBooks:
 			f.write('<osisText osisIDWork="'+self.HeadBibleShortName+'-'+\
@@ -1200,17 +1201,17 @@ if __name__=='__main__':
 	from optparse import OptionParser, OptionGroup
 	Parser = OptionParser(usage="Usage: %prog [options] InputFile")
 	Parser.add_option('--moduletype', dest='ModuleType',\
-		default='Bible', help=('тип модуля. Допустимые значения: '+\
-		'Bible (по умолчанию), Dictionary, Commentary, Book, Apocrypha. '+\
-		'Dictionary для словаря (поскольку у словарей нет bibleqt.ini, в '+\
-		'качестве входного нужно указывать .htm-файл со словарем), Commentary'+\
-		' для комментария, Book для просто книги, Bible для библии. О типе '+\
-		'Apocrypha. Можно увидеть на примере модуля "Русский синодальный '+\
-		'текст (с номерами Стронга)". Этот модуль содержит апокрифы, но Sword'+\
-		' апокрифы в библиях не поддерживает. Поэтому если вы запустите на '+\
-		'нем скрипт без указания --moduletype (он по умолчанию Bible), то '+\
-		'получите библейский модуль со всеми каноническими книгами. А если '+\
-		'запустите на нем же с --moduletype Apocrypha, то получите модуль '+\
+		default='Bible', help=('тип модуля. Допустимые значения: '
+		'Bible (по умолчанию), Dictionary, Commentary, Book, Apocrypha. '
+		'Dictionary для словаря (поскольку у словарей нет bibleqt.ini, в '
+		'качестве входного нужно указывать .htm-файл со словарем), Commentary'
+		' для комментария, Book для просто книги, Bible для библии. О типе '
+		'Apocrypha. Можно увидеть на примере модуля "Русский синодальный '
+		'текст (с номерами Стронга)". Этот модуль содержит апокрифы, но Sword'
+		' апокрифы в библиях не поддерживает. Поэтому если вы запустите на '
+		'нем скрипт без указания --moduletype (он по умолчанию Bible), то '
+		'получите библейский модуль со всеми каноническими книгами. А если '
+		'запустите на нем же с --moduletype Apocrypha, то получите модуль '
 		'типа "просто книга" с только лишь апокрифическими книгами.').\
 		decode('utf-8'), choices=['Bible', 'Dictionary', 'Commentary', 'Book',\
 		'Apocrypha'], type='choice')
@@ -1223,78 +1224,78 @@ if __name__=='__main__':
 		default='ru', help=('язык модуля. По умолчанию: ru').decode('utf-8'))
 	GeneralModuleGroup.add_option('--cs','--charset', dest='CharsetName',\
 		default='',\
-		help=('основной шрифт, используемый в модуле. Необходимо только если'+\
-		' используется шрифт, в котором расположение символов не совпадает с'+\
-		' ни с одной стандартной кодировкой (например некоторые'+\
-		' греческие и еврейские шрифты). Можно определить открыв какой-нибудь'+\
-		' .htm-файл модуля в текстовом редакторе (например, Блокнот). Если '+\
-		'там, где в Цитате наблюдается греческий, еврейский или еще какой-'+\
-		'нибудь не латинский текст, вы видите набор латинских символов и '+\
-		'знаков препинания, значит в этом месте применен такой шрифт. Данную '+\
-		'опцию надо использовать лишь, если весь текст в модуле набран таким '+\
-		'образом. В комплекте с программой содержатся таблицы перекодировки '+\
-		'для наиболее распространенных шрифтов: Symbol, BQTGrk, BQTHeb. В '+\
-		'качестве примера можно посмотреть модуль "Greek-Westcott Hort". '+\
-		'Он весь набран с использованием греческого шрифта Symbol. Для него '+\
+		help=('основной шрифт, используемый в модуле. Необходимо только если'
+		' используется шрифт, в котором расположение символов не совпадает с'
+		' ни с одной стандартной кодировкой (например некоторые'
+		' греческие и еврейские шрифты). Можно определить открыв какой-нибудь'
+		' .htm-файл модуля в текстовом редакторе (например, Блокнот). Если '
+		'там, где в Цитате наблюдается греческий, еврейский или еще какой-'
+		'нибудь не латинский текст, вы видите набор латинских символов и '
+		'знаков препинания, значит в этом месте применен такой шрифт. Данную '
+		'опцию надо использовать лишь, если весь текст в модуле набран таким '
+		'образом. В комплекте с программой содержатся таблицы перекодировки '
+		'для наиболее распространенных шрифтов: Symbol, BQTGrk, BQTHeb. В '
+		'качестве примера можно посмотреть модуль "Greek-Westcott Hort". '
+		'Он весь набран с использованием греческого шрифта Symbol. Для него '
 		'подходит опция --cs Symbol').decode('utf-8'))
 	GeneralModuleGroup.add_option('--eb','--encodingbooks',\
 		dest='ModuleEncoding', default='cp1251', help=(\
 		'кодировка модуля BibleQuote. По умолчанию: cp1251').decode('utf-8'))
 	GeneralModuleGroup.add_option('--lbt','--linebreaktag',\
 		dest='LineBreakTag', default='', help=(\
-		'тег разрыва строки. Чаще всего в модулях непарный тег br '+\
-		'(указывается как --linebreaktag br). Используется почти во всех '+\
-		'модулях, но не для всех модулей целесообразно его указывать при '+\
-		'конвертировании. В большинстве модулей перевод строки стоит к месту '+\
-		'и не к месту и его перенос в модуль Sword приводит к тому, что на '+\
-		'экране модуль смотрится неряшливо. А для некоторых модулей, если не '+\
-		'делать перевода строки, то получается очень трудночитаемый текст. '+\
-		'Таков, например, словарь Zondervan. Нужно подходить к делу творчески'+\
+		'тег разрыва строки. Чаще всего в модулях непарный тег br '
+		'(указывается как --linebreaktag br). Используется почти во всех '
+		'модулях, но не для всех модулей целесообразно его указывать при '
+		'конвертировании. В большинстве модулей перевод строки стоит к месту '
+		'и не к месту и его перенос в модуль Sword приводит к тому, что на '
+		'экране модуль смотрится неряшливо. А для некоторых модулей, если не '
+		'делать перевода строки, то получается очень трудночитаемый текст. '
+		'Таков, например, словарь Zondervan. Нужно подходить к делу творчески'
 		', оценивая конечный результат (внешний вид модуля в Sword)').\
 		decode('utf-8'))
 	Parser.add_option_group(GeneralModuleGroup)
-	NonDictionaryModuleGroup = OptionGroup(Parser, ('Опции, общие для всех'+\
+	NonDictionaryModuleGroup = OptionGroup(Parser, ('Опции, общие для всех'
 		' модулей, кроме словарей').decode('utf-8'))
 	NonDictionaryModuleGroup.add_option('--e','--encoding', dest='INIEncoding',\
 		default='cp1251',\
 		help=('кодировка bibleqt.ini. По умолчанию: cp1251').decode('utf-8'))
 	Parser.add_option_group(NonDictionaryModuleGroup)
-	BibleModuleGroup = OptionGroup(Parser, ('Опции, общие для библейских'+\
+	BibleModuleGroup = OptionGroup(Parser, ('Опции, общие для библейских'
 		' модулей').decode('utf-8'))
 	BibleModuleGroup.add_option('--v','--versification', dest='Versification',\
 		default='Auto', help=(\
-		'версификация. Разные библейские модули используют разные стандарты'+\
-		' по разбиению текста на главы и стихи. Если не указана, программа '+\
-		'попробует определить ее автоматически. Если в 9-м псалме есть 39-й'+
-		' стих или в 14-й главе послания Римлянам есть 36-й стих, будет '+\
-		'принята Synodal. Если в 10-м псалме есть 18-й стих или в 19-й главе'+\
-		' Деяний есть 41-й стих, будет принята KJV. Если определить '+\
-		'версификацию автоматически не удастся, будет выдано соответствующее '+\
+		'версификация. Разные библейские модули используют разные стандарты'
+		' по разбиению текста на главы и стихи. Если не указана, программа '
+		'попробует определить ее автоматически. Если в 9-м псалме есть 39-й'
+		' стих или в 14-й главе послания Римлянам есть 36-й стих, будет '
+		'принята Synodal. Если в 10-м псалме есть 18-й стих или в 19-й главе'
+		' Деяний есть 41-й стих, будет принята KJV. Если определить '
+		'версификацию автоматически не удастся, будет выдано соответствующее '
 		'предупреждение и принята версификация Synodal').decode('utf-8'))
 	BibleModuleGroup.add_option('--cv','--convertversification',\
 		action="store_true",dest='ConvertVersification',help=(\
-		'преобразовывать из Synodal версификации в KJV. Скрипт произведет '+\
+		'преобразовывать из Synodal версификации в KJV. Скрипт произведет '
 		'переразбивку глав в соответствии с нужной версификацией').\
 		decode('utf-8'))
 	BibleModuleGroup.add_option('--nt','--notetag', dest='NoteTag', default='',\
 		help=('тег, отделяющий сноски от текста в модуле BibleQuote.').\
 		decode('utf-8'))
 	BibleModuleGroup.add_option('--tt','--titletag', dest='TitleTag',default='',\
-		help=('тег, отделяющий подзаголовки от текста в модуле BibleQuote.'+\
-		' Нужно открыть модуль в Цитате и посмотреть, есть ли там в тексте '+\
-		'блоки с отличным от обычного форматированием (заголовки жирным '+\
-		'текстом или сноски курсивом), затем открыть каким-нибудь текстовым '+\
-		'редактором .htm-файл какой-нибудь книги и посмотреть, какие теги '+\
-		'выделяют там надписи, которые при просмотре в Цитате имеют необычное'+\
-		' форматирование. Например для модуля "Библия (Современный перевод)" '+\
+		help=('тег, отделяющий подзаголовки от текста в модуле BibleQuote.'
+		' Нужно открыть модуль в Цитате и посмотреть, есть ли там в тексте '
+		'блоки с отличным от обычного форматированием (заголовки жирным '
+		'текстом или сноски курсивом), затем открыть каким-нибудь текстовым '
+		'редактором .htm-файл какой-нибудь книги и посмотреть, какие теги '
+		'выделяют там надписи, которые при просмотре в Цитате имеют необычное'
+		' форматирование. Например для модуля "Библия (Современный перевод)" '
 		'подходят опции --nt i --tt h3').decode('utf-8'))
 	Parser.add_option_group(BibleModuleGroup)
-	DictionaryModuleGroup=OptionGroup(Parser, ('Опции, специфичные для '+\
+	DictionaryModuleGroup=OptionGroup(Parser, ('Опции, специфичные для '
 		'модулей-словарей').decode('utf-8'))
 	DictionaryModuleGroup.add_option('--dt','--dictionarytype',\
 		dest='DictionaryType', default='Generic', help=(\
-		'тип словаря. Допустимые значения: '+\
-		'HebrewStrong, GreekStrong, Generic (по умолчанию). GreekStrong для '+\
+		'тип словаря. Допустимые значения: '
+		'HebrewStrong, GreekStrong, Generic (по умолчанию). GreekStrong для '
 		'греческого словаря Стронга, HebrewStrong для еврейского.').\
 		decode('utf-8'), choices=['HebrewStrong', 'GreekStrong', 'Generic'],\
 		type='choice')
