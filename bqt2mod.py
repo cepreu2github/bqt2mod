@@ -41,7 +41,7 @@
 import string, sys, os, codecs, re, subprocess, datetime, shutil
 from HTMLParser import HTMLParser, HTMLParseError
 
-ScriptVersion = '0.8.2'
+ScriptVersion = '0.8.3'
 
 class ConvertError(Exception):
 	pass
@@ -222,9 +222,12 @@ class CConverter:
 		#создание HTML-парсера и OSIS-райтера
 		self.HTMLParser = self.CHTMLParser(self)
 		self.OsisWriter = self.COsisWriter(self)
+		#делаем пути абсолютными, чтобы избежать потенциальных проблем
+		self.Options.InputFileName = os.path.abspath(self.Options.InputFileName)
+		self.Options.OutputPath = os.path.abspath(self.Options.OutputPath)
 		#определяем рабочие пути
-		self.BQModuleDirectory = os.path.dirname(Options.InputFileName)+'/'
-		self.OutputDirectory = ''.join(Options.OutputPath)
+		self.BQModuleDirectory = os.path.dirname(self.Options.InputFileName)+'/'
+		self.OutputDirectory = ''.join(self.Options.OutputPath)+'/'
 		self.ConfFileDirectory = self.OutputDirectory+'mods.d/'
 		if self.Options.ModuleType == 'Bible':
 			self.DataPath = 'modules/texts/ztext/'
