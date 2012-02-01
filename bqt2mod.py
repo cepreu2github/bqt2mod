@@ -41,7 +41,7 @@
 import string, sys, os, codecs, re, subprocess, datetime, shutil
 from HTMLParser import HTMLParser, HTMLParseError
 
-ScriptVersion = '0.8.3'
+ScriptVersion = '0.8.4'
 
 class ConvertError(Exception):
 	pass
@@ -721,7 +721,6 @@ class CConverter:
 				self.Converter.Options.Versification = 'KJV'
 
 		def WriteVerse(self, Text, SuggestedVerseId):
-			self.CurrentVerseId += 1
 			#определяем VerseId
 			self.DetermineVerseId(SuggestedVerseId)
 			#автоматическое определение версификации
@@ -957,7 +956,8 @@ class CConverter:
 			for Verse in PreparsedLine:
 				if self.CurrentBookSettings.CurrentVerse != '':
 					self.FinalizeVerse()
-				self.CurrentBookSettings.CurrentVerse +=Verse
+				self.CurrentBookSettings.CurrentVerse += Verse
+				self.OsisWriter.CurrentVerseId += 1
 	
 	#добавление заголовков и сносок
 	def MakeNotesAndTitles(self, Text, BookName, ChapterId, VerseId):
@@ -1092,7 +1092,7 @@ class CConverter:
 		Text = self.StripTagsAndRecode(Text)
 		#вычисление VerseId по первому числу стиха
 		if self.Options.ModuleType in self.JustBooks:
-			Number = self.OsisWriter.CurrentVerseId+1
+			Number = self.OsisWriter.CurrentVerseId
 		else:
 			try:
 				Text = Text.lstrip()
@@ -1200,6 +1200,10 @@ class CConverter:
 
 # если скрипт запущен из командной строки
 if __name__=='__main__':
+	#определение кодировки
+	if sys.stdout.encoding == None:
+		reload(sys)
+		sys.setdefaultencoding('utf-8')
 	#опции вызова скрипта
 	from optparse import OptionParser, OptionGroup
 	Parser = OptionParser(usage="Usage: %prog [options] InputFile")

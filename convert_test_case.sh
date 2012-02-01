@@ -1,29 +1,33 @@
 #!/bin/sh
 #модули, необходимые большинству людей
-./new.py --cv /home/cepreu/.wine/drive_c/BibleQuote6/RstStrong/BIBLEQT.INI
-./new.py --moduletype Dictionary --dictionarytype GreekStrong /home/cepreu/.wine/drive_c/BibleQuote6/Strongs/GREEK.HTM
-./new.py --moduletype Dictionary --dictionarytype HebrewStrong /home/cepreu/.wine/drive_c/BibleQuote6/Strongs/HEBREW.HTM
-./new.py --moduletype Dictionary --linebreaktag br /home/cepreu/.wine/drive_c/BibleQuote6/Dictionaries/zondervan.htm
-./new.py --notetag i --titletag h3 --cv /home/cepreu/.wine/drive_c/BibleQuote6/MDR/BibleQT.ini
-./new.py --cv /home/cepreu/.wine/drive_c/BibleQuote6/Kuznetsova/BIBLEQT.INI
-./new.py --moduletype Book /home/cepreu/.wine/drive_c/BibleQuote6/Commentaries/NGSB/BIBLEQT.INI
-./new.py --moduletype Book /home/cepreu/.wine/drive_c/BibleQuote6/Christian30-1000/BIBLEQT.INI
-./new.py --moduletype Apocrypha /home/cepreu/.wine/drive_c/BibleQuote6/RstStrong/BIBLEQT.INI
-./new.py --moduletype Book /home/cepreu/.wine/drive_c/BibleQuote6/Bible_Gravur_Dore/bibleqt.ini
-./new.py --cv /home/cepreu/.wine/drive_c/BibleQuote6/NT_Cassian/Bibleqt.ini
-./new.py --cv /home/cepreu/.wine/drive_c/BibleQuote6/NT_SlovoLife/Bibleqt.ini
-./new.py --cv /home/cepreu/.wine/drive_c/BibleQuote6/RBSOT/BIBLEQT.INI
-./new.py --moduletype Book /home/cepreu/.wine/drive_c/BibleQuote6/halley/bibleqt.ini
-./new.py --notetag font --cv /home/cepreu/.wine/drive_c/BibleQuote6/Lutkovsky/BIBLEQT.INI
-./new.py --moduletype Book /home/cepreu/.wine/drive_c/BibleQuote6/DNTC/bibleqt.ini
-./new.py --moduletype Book --encoding utf_8 --encodingbooks utf_8 /home/cepreu/.wine/drive_c/BibleQuote6/BibleAtlasRus/bibleqt.ini
-./new.py --moduletype Book /home/cepreu/.wine/drive_c/BibleQuote6/bibledict/bibleqt.ini
-./new.py --moduletype Commentary --cv /home/cepreu/.wine/drive_c/BibleQuote6/Commentaries/Kuznetsova-Comments/BIBLEQT.INI
-./new.py --encoding utf_8 --encodingbooks utf_8 /home/cepreu/.wine/drive_c/BibleQuote6/Bib_Ru_CJB/bibleqt.ini
-./new.py --moduletype Book /home/cepreu/.wine/drive_c/BibleQuote6/Commentaries/Keyle/BIBLEQT.INI
-./new.py --moduletype Book /home/cepreu/.wine/drive_c/BibleQuote6/Commentaries/McDonald/bibleqt.ini
-./new.py --moduletype Book /home/cepreu/.wine/drive_c/BibleQuote6/Commentaries/Lop/bibleqt.ini
+./bqt2mod.py --cv /home/cepreu/.wine/drive_c/BibleQuote/RstStrong/BIBLEQT.INI
+./bqt2mod.py --moduletype Dictionary --dictionarytype GreekStrong /home/cepreu/.wine/drive_c/BibleQuote/Strongs/GREEK.HTM
+./bqt2mod.py --moduletype Dictionary --dictionarytype HebrewStrong /home/cepreu/.wine/drive_c/BibleQuote/Strongs/HEBREW.HTM
+./bqt2mod.py --moduletype Dictionary --linebreaktag br /home/cepreu/.wine/drive_c/BibleQuote/Dictionaries/zondervan.htm
+./bqt2mod.py --notetag i --titletag h3 --cv /home/cepreu/.wine/drive_c/BibleQuote/MDR/BibleQT.ini
+./bqt2mod.py --cv /home/cepreu/.wine/drive_c/BibleQuote/Kuznetsova/BIBLEQT.INI
+./bqt2mod.py --moduletype Book /home/cepreu/.wine/drive_c/BibleQuote/Commentaries/NGSB/BIBLEQT.INI
+./bqt2mod.py --moduletype Book /home/cepreu/.wine/drive_c/BibleQuote/Christian30-1000/BIBLEQT.INI
+./bqt2mod.py --moduletype Apocrypha /home/cepreu/.wine/drive_c/BibleQuote/RstStrong/BIBLEQT.INI
+./bqt2mod.py --cv /home/cepreu/.wine/drive_c/BibleQuote/NT_Cassian/Bibleqt.ini
+./bqt2mod.py --cv /home/cepreu/.wine/drive_c/BibleQuote/NT_SlovoLife/Bibleqt.ini
+./bqt2mod.py --cv /home/cepreu/.wine/drive_c/BibleQuote/RBSOT/BIBLEQT.INI
+./bqt2mod.py --moduletype Book /home/cepreu/.wine/drive_c/BibleQuote/halley/bibleqt.ini
+./bqt2mod.py --notetag font --cv /home/cepreu/.wine/drive_c/BibleQuote/Lutkovsky/BIBLEQT.INI
+./bqt2mod.py --moduletype Book /home/cepreu/.wine/drive_c/BibleQuote/DNTC/bibleqt.ini
+./bqt2mod.py --moduletype Book --encoding utf_8 --encodingbooks utf_8 /home/cepreu/.wine/drive_c/BibleQuote/BibleAtlasRus/bibleqt.ini
+./bqt2mod.py --moduletype Book /home/cepreu/.wine/drive_c/BibleQuote/bibledict/bibleqt.ini
+./bqt2mod.py --moduletype Commentary --cv /home/cepreu/.wine/drive_c/BibleQuote/Commentaries/Kuznetsova-Comments/BIBLEQT.INI
+./bqt2mod.py --encoding utf_8 --encodingbooks utf_8 /home/cepreu/.wine/drive_c/BibleQuote/Bib_Ru_CJB/bibleqt.ini
+./bqt2mod.py --moduletype Book /home/cepreu/.wine/drive_c/BibleQuote/Commentaries/Keyle/BIBLEQT.INI
+./bqt2mod.py --moduletype Book /home/cepreu/.wine/drive_c/BibleQuote/Commentaries/McDonald/bibleqt.ini
+./bqt2mod.py --moduletype Book /home/cepreu/.wine/drive_c/BibleQuote/Commentaries/Lop/bibleqt.ini
+./bqt2mod.py --tt b --l=en /home/cepreu/.wine/drive_c/BibleQuote/NASB/BIBLEQT.INI
+./bqt2mod.py --moduletype Dictionary --linebreaktag br /home/cepreu/.wine/drive_c/BibleQuote/Dictionaries/vikhlyantsev.htm
+./bqt2mod.py --l=en /home/cepreu/.wine/drive_c/BibleQuote/Bible_NIV/BIBLEQT.INI
 
 #модули, полезные в качестве дополнительного тестового комплекта
-#./new.py --encoding utf_8 --encodingbooks utf_8 /home/cepreu/.wine/drive_c/BibleQuote6/BHS+/bibleqt.ini
-#./new.py --encoding utf_8 --encodingbooks utf_8 --language en /home/cepreu/.wine/drive_c/BibleQuote6/IHOT+/bibleqt.ini
+#./bqt2mod.py --encoding utf_8 --encodingbooks utf_8 /home/cepreu/.wine/drive_c/BibleQuote/BHS+/bibleqt.ini
+#./bqt2mod.py --encoding utf_8 --encodingbooks utf_8 --language en /home/cepreu/.wine/drive_c/BibleQuote/IHOT+/bibleqt.ini
+#./bqt2mod.py --moduletype Book /home/cepreu/.wine/drive_c/BibleQuote/Bible_Gravur_Dore/bibleqt.ini
+
