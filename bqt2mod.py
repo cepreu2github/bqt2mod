@@ -41,7 +41,7 @@
 import string, sys, os, codecs, re, subprocess, datetime, shutil
 from HTMLParser import HTMLParser, HTMLParseError
 
-ScriptVersion = '0.8.4'
+ScriptVersion = '0.8.5'
 
 class ConvertError(Exception):
 	pass
@@ -906,7 +906,7 @@ class CConverter:
 						if not ProblemFound and BookName ==\
 							self.CurrentBookName and BadChapterId ==\
 							CurrentChapterId and VersesCount ==\
-							len(VersesList):
+							VersesList[-1][0]:
 							ProblemFound = True
 							self.FixVersificationProblem(Action, ChapterId,\
 								VerseId)
