@@ -41,7 +41,7 @@
 import string, sys, os, codecs, re, subprocess, datetime, shutil
 from HTMLParser import HTMLParser, HTMLParseError
 
-ScriptVersion = '0.8.5'
+ScriptVersion = '0.8.6'
 
 class ConvertError(Exception):
 	pass
@@ -590,7 +590,7 @@ class CConverter:
 			BookFile = file(self.GetFileNameInProperCase(\
 				self.CurrentBookSettings.BookPathToFile), 'r')
 			print ('Обрабатываю файл ').decode('utf-8')+\
-				self.CurrentBookSettings.BookPathToFile
+				self.CurrentBookSettings.BookPathToFile.decode('utf-8')
 			self.ParseBookFile(BookFile, self.CurrentBookSettings.BookName)
 			BookFile.close()
 
